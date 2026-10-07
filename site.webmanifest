@@ -1,0 +1,30 @@
+{
+  "name": "Solid Grow Prosper",
+  "short_name": "SGP",
+  "description": "社外CFO・財務コンサルティング / 生成AI活用支援",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/logo/favicon-svg/favicon-512.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#143354",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/"
+}

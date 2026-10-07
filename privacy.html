@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー | Solid Grow Prosper</title>
+<!-- Favicon / App Icons -->
+<link rel="icon" type="image/svg+xml" href="/logo/favicon-svg/favicon-32.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/logo/favicon-512.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#143354;
+    --navy-800:#1D477A;
+    --blue-600:#2360A4;
+    --blue-100:#D2E6F6;
+    --paper:#E4F0FA;
+    --amber-500:#F5A63C;
+    --ink:#2E4257;
+    --line:#B4D4EE;
+    --solid:#EF5D6B;
+    --grow:#A46FD4;
+    --prosper:#F5A63C;
+    --sky-400:#6BA6DC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans JP",sans-serif;line-height:1.85;}
+  .mincho{font-family:"Zen Kaku Gothic New",sans-serif;}
+
+
+  .page-head{
+    background:linear-gradient(180deg,var(--blue-100) 0%, var(--paper) 100%);
+    padding:52px 32px 36px;text-align:center;
+  }
+  .page-head .eyebrow{font-size:0.8rem;letter-spacing:.12em;color:var(--blue-600);font-weight:700;margin-bottom:10px;}
+  .page-head h1{font-family:"Zen Kaku Gothic New",sans-serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--navy-950);margin:0;}
+
+  .policy{max-width:740px;margin:0 auto;padding:48px 32px 90px;font-size:0.9rem;color:var(--ink);}
+  .policy > .intro{margin-bottom:36px;}
+
+  .policy section{margin-bottom:34px;}
+  .policy h2{
+    font-size:1rem;color:var(--navy-950);font-weight:700;margin:0 0 14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .policy h2 .n{
+    font-family:"Zen Kaku Gothic New",sans-serif;color:var(--blue-600);font-size:0.85rem;font-weight:700;
+    border:1.5px solid var(--blue-600);border-radius:50%;width:24px;height:24px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .policy dl{margin:0 0 6px;}
+  .policy dl div{display:flex;gap:10px;margin-bottom:4px;font-size:0.88rem;}
+  .policy dl dt{color:var(--navy-800);font-weight:700;flex-shrink:0;width:6.5em;}
+  .policy ul{margin:6px 0 0;padding-left:1.3em;}
+  .policy ul li{margin-bottom:4px;}
+  .policy ol.legal{margin:6px 0 0;padding-left:1.5em;}
+  .policy ol.legal li{margin-bottom:4px;}
+  .policy p{margin:0 0 8px;}
+
+  .contact-box{
+    background:var(--blue-100);border-radius:8px;padding:16px 20px;margin-top:12px;font-size:0.86rem;
+  }
+  .contact-box strong{color:var(--navy-950);}
+
+  .meta{
+    border-top:1px solid var(--line);padding-top:24px;margin-top:44px;font-size:0.82rem;color:var(--navy-800);
+  }
+  .meta p{margin:0 0 4px;}
+
+
+  @media (max-width:760px){
+    header{padding:12px 16px;flex-wrap:wrap;gap:10px;}
+    nav{flex-wrap:wrap;justify-content:center;}
+    .policy dl div{flex-direction:column;gap:0;}
+    .policy dl dt{width:auto;}
+  }
+  body.modal-mode header,
+  body.modal-mode footer{display:none;}
+  body.modal-mode .page-head{padding-top:28px;}
+
+  /* --- rebrand: brand mark & name --- */
+  /* ---------- HEADER (unified) ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(233,245,253,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1120px;margin:0 auto;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+  .brand-mark{width:34px;height:34px;flex-shrink:0;}
+  .brand-name{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-name b{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:1.02rem;letter-spacing:.02em;color:var(--navy-950);
+  }
+  .brand-name>span{font-size:.62rem;letter-spacing:.14em;color:var(--navy-800);}
+  nav.main{display:flex;gap:4px;align-items:center;}
+  nav.main a{
+    font-size:.86rem;font-weight:500;color:var(--navy-950);
+    text-decoration:none;padding:8px 14px;border-radius:999px;
+    transition:background .2s,color .2s;white-space:nowrap;border:none;
+  }
+  nav.main a:hover,nav.main a:focus-visible{background:var(--blue-100);color:var(--blue-600);}
+  nav.main a:focus-visible{outline:2px solid var(--blue-600);outline-offset:2px;}
+  nav.main a.current{background:var(--blue-100);color:var(--blue-600);}
+  nav.main a.cta{
+    background:var(--navy-950);color:#fff;font-weight:700;padding:9px 18px;
+  }
+  nav.main a.cta:hover{background:var(--blue-600);color:#fff;}
+
+  /* ---------- FOOTER (unified) ---------- */
+  footer{
+    border-top:1px solid var(--line);padding:40px 0 30px;background:var(--paper);
+    text-align:left;color:var(--ink);font-size:1rem;
+  }
+  .footer-wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:24px;flex-wrap:wrap;margin-bottom:24px;
+  }
+  .footer-brand b{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    color:var(--navy-950);font-size:1.05rem;display:block;
+  }
+  .footer-brand span{font-size:.78rem;color:var(--navy-800);display:block;}
+  .footer-brand span:first-of-type{letter-spacing:.06em;margin:2px 0 4px;}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-start;margin:0;}
+  footer nav a{font-size:.84rem;color:var(--ink);text-decoration:none;padding:0;border:none;border-radius:0;}
+  footer nav a:hover{color:var(--blue-600);text-decoration:underline;background:none;}
+  .copy{font-size:.74rem;color:var(--navy-800);text-align:center;border-top:1px solid var(--line);padding-top:18px;}
+
+  /* ---------- HEADER/FOOTER responsive ---------- */
+  @media (max-width:860px){
+    nav.main{display:none;}
+  }
+  @media (max-width:560px){
+    .header-inner{padding:12px 16px;}
+    .footer-wrap{padding:0 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4"  y="24" width="8" height="12" rx="2" fill="#EF5D6B"/>
+        <rect x="16" y="16" width="8" height="20" rx="2" fill="#A46FD4"/>
+        <rect x="28" y="6"  width="8" height="30" rx="2" fill="#F5A63C"/>
+      </svg>
+      <span class="brand-name">
+        <b>Solid Grow Prosper</b>
+        <span>ソリッド・グロウ・プロスパー</span>
+      </span>
+    </a>
+    <nav class="main">
+      <a href="index.html">トップ</a>
+      <a href="service.html">事業内容</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="column.html">コラム</a>
+      <a href="toolbox.html">どうぐばこ</a>
+      <a class="cta" href="contact.html">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="eyebrow">PRIVACY POLICY</div>
+  <h1 class="mincho">プライバシーポリシー（個人情報保護方針）</h1>
+</section>
+
+<div class="policy">
+  <p class="intro">Solid Grow Prosper（以下、「当事業所」といいます。）は、個人情報の重要性を認識し、以下の方針に基づき適切に管理・保護いたします。</p>
+
+  <section>
+    <h2><span class="n">1</span>事業者情報</h2>
+    <dl>
+      <div><dt>事業所名</dt><dd style="margin:0;">Solid Grow Prosper</dd></div>
+      <div><dt>代表者名</dt><dd style="margin:0;">吉原　誠</dd></div>
+      <div><dt>所在地</dt><dd style="margin:0;">新潟県上越市（以下略）</dd></div>
+      <div><dt>E-Mail</dt><dd style="margin:0;">info3208@solid-grow-prosper.jp</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>個人情報の取得</h2>
+    <p>当事業所は、以下の方法で個人情報を取得します。</p>
+    <ul>
+      <li>お問い合せフォーム、セミナー申込みフォームの入力内容</li>
+      <li>メール、ＳＮＳ、電話等によるお問い合せ内容</li>
+      <li>交流会等における名刺交換</li>
+      <li>サービス提供のために必要な氏名、連絡先、会社情報等</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>利用の目的</h2>
+    <p>取得した個人情報は、次の目的のために利用します。</p>
+    <ul>
+      <li>コンサルティング、セミナー、各種講座などのサービス提供のため</li>
+      <li>お問い合せに対する回答、連絡のため</li>
+      <li>新たなサービスやセミナー、イベント等のご案内のため</li>
+      <li>アンケートやマーケティング分析のため</li>
+      <li>法令等に基づく対応のため</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>第三者への提供</h2>
+    <p>当事業所は、次の場合をのぞき、第三者に個人情報を提供しません。</p>
+    <ol class="legal">
+      <li>本人の同意がある場合</li>
+      <li>法令に基づく場合</li>
+      <li>生命、財産の保護のためにやむを得ない場合</li>
+      <li>委託先への業務委託に必要な場合（別途、秘密保持契約を締結）</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>個人情報の安全管理</h2>
+    <p>当事業所は、個人情報の漏洩、滅失、改ざんを防ぐため、必要かつ適切な安全管理措置を講じます。</p>
+  </section>
+
+  <section>
+    <h2><span class="n">6</span>開示・訂正・削除</h2>
+    <p>ご本人から個人情報の開示・訂正・削除等の請求があった場合、本人に確認のうえ、速やかに対応します。本件に関するお問い合せは、下記までお願いいたします。</p>
+    <div class="contact-box">
+      <strong>【お問い合せ窓口】</strong><br>
+      Solid Grow Prosper　吉原　誠　/　E-Mail：info3208@solid-grow-prosper.jp
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">7</span>Cookieの利用</h2>
+    <p>当サイトでは、利便性の向上やアクセス解析のため、Cookieを利用する場合があります。Cookieは個人を特定できる情報を含みません。また、当サイトでは、Googleアナリティクス等のツールを用いて、匿名のアクセスデータを収集する場合があります。なお、ブラウザの設定でCookieの受け入れを拒否することも可能です。</p>
+  </section>
+
+  <section>
+    <h2><span class="n">8</span>reCAPTCHA v3の利用</h2>
+    <p>当サイトでは、インターネット上の不正アクセスやスパムを防ぐため、Googleが提供するreCAPTCHA v3を利用しています。このサービスは、ユーザーが人間であるかどうかを判断するために、クッキーやユーザーの操作情報（IPアドレスやマウス操作、ブラウザ情報など）を収集し、Googleに送信する場合があります。reCAPTCHAの利用は、Googleのプライバシーポリシーおよび利用規約が適用されます。</p>
+  </section>
+
+  <section>
+    <h2><span class="n">9</span>改訂</h2>
+    <p>本ポリシーの内容は、必要に応じて改訂することがあります。改訂後の内容は、本サイトに掲載した時点で効力を生じます。</p>
+  </section>
+
+  <div class="meta">
+    <p>制定日：令和7年10月20日(月)</p>
+    <p>改定日：令和7年10月21日(火)　「reCAPTCHA v3の利用」の追記</p>
+    <p>Solid Grow Prosper　代表　吉原　誠</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <b>Solid Grow Prosper</b>
+        <span>ソリッド・グロウ・プロスパー</span>
+        <span>社外CFO・財務コンサルティング / 生成AI活用支援</span>
+      </div>
+      <nav>
+        <a href="index.html">トップ</a>
+        <a href="service.html">事業内容</a>
+        <a href="profile.html">プロフィール</a>
+        <a href="column.html">コラム</a>
+        <a href="toolbox.html">どうぐばこ</a>
+        <a href="contact.html">お問合せ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="copy">© 2026 Solid Grow Prosper</div>
+  </div>
+</footer>
+
+<script>
+  if (new URLSearchParams(window.location.search).get('modal') === '1') {
+    document.body.classList.add('modal-mode');
+  }
+</script>
+
+</body>
+</html>

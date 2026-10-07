@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solid Grow Prosper | 社外CFO・財務コンサルティング</title>
+<!-- Favicon / App Icons -->
+<link rel="icon" type="image/svg+xml" href="/logo/favicon-svg/favicon-32.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/logo/favicon-512.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="売上はあるのに手元にお金が残らない——その課題を、お金の流れの見える化と生成AI活用で解決します。新潟の社外CFO・財務コンサルティング。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Base — pastel blue family（少し濃いめに調整） */
+    --sky-50:#E4F0FA;      /* page background（濃いめのパステルブルー） */
+    --sky-100:#D2E6F6;     /* soft panel */
+    --sky-200:#B4D4EE;     /* lines / borders */
+    --sky-400:#6BA6DC;     /* mid blue */
+    --blue-700:#2360A4;    /* primary blue */
+    --navy-900:#143354;    /* headings / deep ink */
+    --ink:#2E4257;         /* body text */
+    --ink-soft:#556A80;    /* muted text */
+
+    /* Accents — Solid / Grow / Prosper（明るめに調整） */
+    --solid:#EF5D6B;       /* 赤  — Solid（土台・信頼） */
+    --grow:#A46FD4;        /* 紫  — Grow（変化・成長） */
+    --prosper:#F5A63C;     /* オレンジ — Prosper（繁栄・実り） */
+
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow-sm:0 2px 10px rgba(23,58,94,.06);
+    --shadow-md:0 10px 30px rgba(23,58,94,.10);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sky-50);
+    color:var(--ink);
+    font-family:"Noto Sans JP",sans-serif;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:"Zen Kaku Gothic New",sans-serif;}
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(242,248,253,.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--sky-200);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1120px;margin:0 auto;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+  .brand-mark{width:34px;height:34px;flex-shrink:0;}
+  .brand-name{display:flex;flex-direction:column;line-height:1.15;}
+  .brand-name b{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:1.02rem;letter-spacing:.02em;color:var(--navy-900);
+  }
+  .brand-name span{font-size:.62rem;letter-spacing:.14em;color:var(--ink-soft);}
+  nav.main{display:flex;gap:4px;align-items:center;}
+  nav.main a{
+    font-size:.86rem;font-weight:500;color:var(--navy-900);
+    text-decoration:none;padding:8px 14px;border-radius:999px;
+    transition:background .2s,color .2s;white-space:nowrap;
+  }
+  nav.main a:hover,nav.main a:focus-visible{background:var(--sky-100);color:var(--blue-700);}
+  nav.main a:focus-visible{outline:2px solid var(--blue-700);outline-offset:2px;}
+  nav.main a.cta{
+    background:var(--navy-900);color:var(--white);font-weight:700;
+    padding:9px 18px;
+  }
+  nav.main a.cta:hover{background:var(--blue-700);color:var(--white);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:66px 0 30px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.76rem;font-weight:700;letter-spacing:.06em;color:var(--blue-700);
+    background:var(--sky-100);border:1px solid var(--sky-200);
+    padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--prosper);display:inline-block;}
+  .hero h1{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:clamp(1.8rem,4vw,2.75rem);color:var(--navy-900);
+    margin:0 0 22px;line-height:1.5;letter-spacing:.01em;
+  }
+  .hero h1 .mark{
+    background:linear-gradient(transparent 62%, #FDD9A6 62%);
+    padding:0 .05em;
+  }
+  .hero p.lead{
+    color:var(--ink);font-size:1rem;margin:0 0 30px;
+  }
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-weight:700;font-size:.92rem;padding:14px 28px;border-radius:10px;
+    text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s ease,box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--navy-900);color:var(--white);box-shadow:var(--shadow-sm);}
+  .btn-primary:hover{box-shadow:var(--shadow-md);}
+  .btn-ghost{border:1.5px solid var(--sky-200);color:var(--navy-900);background:var(--white);}
+  .btn-ghost:hover{border-color:var(--blue-700);color:var(--blue-700);}
+
+  /* ---- Signature: three-block growth puzzle ---- */
+  .signature{
+    position:relative;background:var(--white);border:1px solid var(--sky-200);
+    border-radius:20px;padding:30px 30px 22px;box-shadow:var(--shadow-md);
+  }
+  .sig-flow{display:flex;flex-direction:column;gap:12px;}
+  .sig-row{
+    display:flex;align-items:center;gap:16px;
+    opacity:0;transform:translateY(10px);
+    animation:sig-in .55s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  .sig-row:nth-child(1){animation-delay:.10s;}
+  .sig-row:nth-child(2){animation-delay:.28s;}
+  .sig-row:nth-child(3){animation-delay:.46s;}
+  @keyframes sig-in{to{opacity:1;transform:none;}}
+  .sig-bar{
+    height:52px;border-radius:10px;display:flex;align-items:center;
+    padding:0 16px;color:var(--white);font-weight:700;font-size:.9rem;
+    font-family:"Zen Kaku Gothic New",sans-serif;flex-shrink:0;
+    position:relative;overflow:hidden;
+  }
+  .sig-bar span{position:relative;z-index:1;}
+  .sig-bar small{
+    display:block;font-size:.6rem;font-weight:500;letter-spacing:.12em;
+    opacity:.85;line-height:1;
+  }
+  .sig-solid{width:34%;background:var(--solid);}
+  .sig-grow{width:52%;background:var(--grow);}
+  .sig-prosper{width:74%;background:var(--prosper);}
+  .sig-note{color:var(--ink-soft);font-size:.82rem;line-height:1.5;}
+  .sig-caption{
+    margin-top:18px;padding-top:16px;border-top:1px dashed var(--sky-200);
+    font-size:.78rem;color:var(--ink-soft);text-align:center;
+  }
+  .sig-caption b{color:var(--navy-900);}
+  @media (prefers-reduced-motion:reduce){
+    .sig-row{animation:none;opacity:1;transform:none;}
+  }
+
+  /* ---------- PROBLEM / EMPATHY STRIP ---------- */
+  .empathy{
+    background:var(--navy-900);color:var(--white);
+    margin-top:40px;padding:44px 0;
+  }
+  .empathy .wrap{text-align:center;}
+  .empathy h2{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;
+    font-size:clamp(1.2rem,2.6vw,1.55rem);margin:0 0 10px;line-height:1.6;
+  }
+  .empathy p{color:#C9DCEE;font-size:.95rem;margin:0;max-width:72ch;margin-inline:auto;}
+
+  /* ---------- SERVICES ---------- */
+  .services{padding:70px 0;}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+  .sec-label{
+    font-size:.74rem;font-weight:700;letter-spacing:.16em;color:var(--blue-700);
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:clamp(1.4rem,3vw,1.8rem);color:var(--navy-900);margin:0 0 12px;
+  }
+  .sec-head p{color:var(--ink-soft);font-size:.94rem;margin:0;}
+  .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .service-card{
+    background:var(--white);border:1px solid var(--sky-200);border-radius:var(--radius);
+    padding:32px 30px 28px;position:relative;overflow:hidden;
+    box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
+  }
+  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .service-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;}
+  .card-cfo::before{background:var(--grow);}
+  .card-ai::before{background:var(--prosper);}
+  .service-icon{
+    width:52px;height:52px;border-radius:12px;display:flex;
+    align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .card-cfo .service-icon{background:#F3EBFA;}
+  .card-ai .service-icon{background:#FDEFD9;}
+  .service-card h3{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;
+    font-size:1.12rem;color:var(--navy-900);margin:0 0 6px;
+  }
+  .service-card .sub{font-size:.74rem;letter-spacing:.1em;color:var(--ink-soft);margin:0 0 14px;}
+  .service-card p{font-size:.9rem;color:var(--ink);margin:0 0 20px;}
+  .service-link{
+    font-size:.84rem;font-weight:700;text-decoration:none;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .card-cfo .service-link{color:var(--grow);}
+  .card-ai .service-link{color:var(--prosper);}
+  .service-link:hover{gap:10px;}
+
+  /* ---------- STEPS ---------- */
+  .steps{background:var(--sky-100);padding:66px 0;}
+  .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px;}
+  .step{
+    background:var(--white);border-radius:var(--radius);padding:28px 24px;
+    border:1px solid var(--sky-200);position:relative;
+  }
+  .step-num{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:1.5rem;color:var(--sky-400);line-height:1;margin-bottom:14px;
+  }
+  .step h3{font-size:1rem;color:var(--navy-900);margin:0 0 8px;font-family:"Zen Kaku Gothic New",sans-serif;font-weight:700;}
+  .step p{font-size:.86rem;color:var(--ink-soft);margin:0;}
+
+  /* ---------- NEWS / COLUMN ---------- */
+  .news{padding:70px 0;}
+  .news-inner{max-width:820px;margin:0 auto;}
+  .news-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    border-bottom:2px solid var(--navy-900);padding-bottom:12px;margin-bottom:6px;
+  }
+  .news-head h2{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    color:var(--navy-900);font-size:1.25rem;margin:0;
+  }
+  .news-head .note{font-size:.72rem;color:var(--ink-soft);}
+  .news-list{list-style:none;margin:0;padding:0;}
+  .news-item{
+    display:flex;gap:18px;padding:20px 6px;border-bottom:1px solid var(--sky-200);
+    align-items:baseline;transition:background .15s;
+  }
+  .news-item:hover{background:var(--sky-50);}
+  .news-item time{font-size:.8rem;color:var(--ink-soft);flex-shrink:0;width:80px;}
+  .tag{
+    font-size:.66rem;font-weight:700;flex-shrink:0;border-radius:5px;padding:3px 9px;
+  }
+  .tag-column{color:var(--grow);background:#F3EBFA;}
+  .tag-news{color:var(--blue-700);background:var(--sky-100);}
+  .news-item .title{font-size:.92rem;color:var(--ink);}
+  .news-item a{color:inherit;text-decoration:none;}
+  .news-item a:hover .title{color:var(--blue-700);text-decoration:underline;}
+  .cms-flag{
+    margin-top:16px;border:1.5px dashed var(--sky-400);border-radius:10px;
+    padding:14px 18px;font-size:.78rem;color:var(--ink-soft);background:var(--white);
+  }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:linear-gradient(120deg,var(--navy-900),var(--blue-700));
+    color:var(--white);padding:56px 0;text-align:center;
+  }
+  .cta-band h2{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    font-size:clamp(1.4rem,3vw,1.85rem);margin:0 0 12px;
+  }
+  .cta-band p{color:#C9DCEE;margin:0 0 26px;font-size:.95rem;}
+  .cta-band .btn-primary{background:var(--white);color:var(--navy-900);}
+  .cta-band .btn-primary:hover{background:var(--sky-100);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--sky-200);padding:40px 0 30px;background:var(--sky-50);
+  }
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:24px;flex-wrap:wrap;margin-bottom:24px;
+  }
+  .footer-brand b{
+    font-family:"Zen Kaku Gothic New",sans-serif;font-weight:900;
+    color:var(--navy-900);font-size:1.05rem;display:block;
+  }
+  .footer-brand span{font-size:.78rem;color:var(--ink-soft);display:block;}
+  .footer-brand span:first-of-type{letter-spacing:.06em;margin:2px 0 4px;}
+  footer nav{display:flex;gap:18px;flex-wrap:wrap;}
+  footer nav a{font-size:.84rem;color:var(--ink);text-decoration:none;}
+  footer nav a:hover{color:var(--blue-700);text-decoration:underline;}
+  .copy{font-size:.74rem;color:var(--ink-soft);text-align:center;border-top:1px solid var(--sky-200);padding-top:18px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  /* ヒーローは中間幅でイラストが窮屈になるため、やや広めの980pxで縦積みへ切替 */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+  }
+  @media (max-width:860px){
+    .service-grid{grid-template-columns:1fr;}
+    .step-grid{grid-template-columns:1fr;}
+    nav.main{display:none;}
+  }
+  @media (max-width:560px){
+    .header-inner{padding:12px 16px;}
+    .wrap{padding:0 18px;}
+    .hero{padding:44px 0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4"  y="24" width="8" height="12" rx="2" fill="#EF5D6B"/>
+        <rect x="16" y="16" width="8" height="20" rx="2" fill="#A46FD4"/>
+        <rect x="28" y="6"  width="8" height="30" rx="2" fill="#F5A63C"/>
+      </svg>
+      <span class="brand-name">
+        <b>Solid Grow Prosper</b>
+        <span>ソリッド・グロウ・プロスパー</span>
+      </span>
+    </a>
+    <nav class="main">
+      <a href="service.html">事業内容</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="column.html">コラム</a>
+      <a href="toolbox.html">どうぐばこ</a>
+      <a class="cta" href="contact.html">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><i></i>社外CFO ・ 財務コンサルティング ・ 生成AI活用支援</span>
+      <h1 class="display">売上はあるのに、<br><span class="mark">手元にお金が残らない。</span></h1>
+      <p class="lead">経営が悪いのではなく、「お金の見方」を知らないだけ。数字が苦手でも、お金の流れを整理すれば、これからの経営は変えられます。</p>
+      <div class="cta-row">
+        <a href="contact.html" class="btn btn-primary">無料相談を申し込む</a>
+        <a href="#news" class="btn btn-ghost">コラムを読む</a>
+      </div>
+    </div>
+
+    <!-- Signature: Solid → Grow → Prosper growth blocks -->
+    <div class="signature" aria-label="Solid Grow Prosper の3ステップ">
+      <div class="sig-flow">
+        <div class="sig-row">
+          <div class="sig-bar sig-solid"><span>Solid<small>土台を固める</small></span></div>
+          <div class="sig-note">お金の流れを見える化し、<br>ぐらつかない経営の土台をつくる。</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-bar sig-grow"><span>Grow<small>伸ばす</small></span></div>
+          <div class="sig-note">利益率と資金繰りを整え、<br>残るお金を着実に増やす。</div>
+        </div>
+        <div class="sig-row">
+          <div class="sig-bar sig-prosper"><span>Prosper<small>実らせる</small></span></div>
+          <div class="sig-note">生成AIで業務を効率化し、<br>本業に使える時間を取り戻す。</div>
+        </div>
+      </div>
+      <div class="sig-caption"><b>Solid → Grow → Prosper</b>　お金の流れを、ブロックで「見える化」する</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPATHY -->
+<section class="empathy">
+  <div class="wrap">
+    <h2 class="display">「忙しく働いているのに、口座のお金がなぜか増えない」</h2>
+    <p>その感覚は、経営者なら誰もが一度は抱くもの。原因は経営の良し悪しではなく、お金の流れが見えず、日々の業務に時間を奪われているから。<br>数字の整理と、生成AIによる効率化。両面から、経営を軽くしていきます。</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="service">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">Services</div>
+      <h2 class="display">2つの視点で、経営の負担を軽くする</h2>
+      <p>「お金の流れ」と「日々の業務」。どちらも整理すれば、経営はもっと楽になります。</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card card-cfo">
+        <div class="service-icon">
+          <svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true">
+            <rect x="0" y="12" width="5" height="9" rx="1.5" fill="#7A4F9E"/>
+            <rect x="7" y="6"  width="5" height="15" rx="1.5" fill="#7A4F9E"/>
+            <rect x="14" y="9" width="5" height="12" rx="1.5" fill="#7A4F9E"/>
+            <rect x="21" y="1" width="5" height="20" rx="1.5" fill="#7A4F9E"/>
+          </svg>
+        </div>
+        <h3>社外CFO・財務コンサルティング</h3>
+        <p class="sub">FINANCE</p>
+        <p>「働いているのに口座のお金が増えない」——数字が苦手でも大丈夫。入ってくるお金と出ていくお金を整理して見える化し、安心して経営判断ができる状態をつくります。</p>
+        <a class="service-link" href="service.html#cfo-service">相談内容を見る →</a>
+      </article>
+      <article class="service-card card-ai">
+        <div class="service-icon">
+          <svg width="26" height="22" viewBox="0 0 26 22" fill="none" aria-hidden="true">
+            <circle cx="5"  cy="11" r="3.5" fill="#E08A2B"/>
+            <circle cx="21" cy="4"  r="3.5" fill="#E08A2B"/>
+            <circle cx="21" cy="18" r="3.5" fill="#E08A2B"/>
+            <path d="M8 11 L18 5 M8 11 L18 17" stroke="#E08A2B" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3>生成AIコンサルティング</h3>
+        <p class="sub">AI ENABLEMENT</p>
+        <p>「AIはいろいろあるけど、結局ウチに何が合うのか分からない」——身近な相談相手として、何が変わるのか・何から始めればいいのかを一緒に整理し、現場に無理のない形で導入まで支援します。</p>
+        <a class="service-link" href="service.html#ai-service">相談内容を見る →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">How it works</div>
+      <h2 class="display">相談から、伴走までの流れ</h2>
+      <p>いきなり契約ではありません。まずは現状を一緒に整理するところから。</p>
+    </div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>無料相談</h3>
+        <p>いまの悩みや数字への不安を、そのままお話しください。何から手をつけるべきかを一緒に見つけます。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>見える化</h3>
+        <p>お金の流れをブロックで整理し、「どこにお金が残らないのか」を目で見て分かる状態に。合わせて、集計や資料づくりなどの事務的な手間を減らします。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>伴走支援</h3>
+        <p>改善の打ち手を一緒に実行。財務も業務も、無理のないペースで着実に整えていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="wrap news-inner">
+    <div class="news-head">
+      <h2 class="display">お知らせ・コラム</h2>
+      <a class="note" href="column.html" style="text-decoration:none;color:var(--blue-700);font-weight:700;">コラム一覧を見る →</a>
+    </div>
+    <ul class="news-list">
+    <!-- ここは自動生成ゾーンです。START〜END の間は公開台帳（スプレッドシート）から自動で作り直されます。
+         ※ START と END のコメント行は消さないでください。 -->
+    <!-- NEWS_LIST_START -->
+      <li class="news-item">
+        <time>2026/10/3</time>
+        <span class="tag tag-column">コラム</span>
+        <a href="column.html#money-01"><span class="title">コラム「Vol.1：黒字なのにお金がない!?」を公開しました</span></a>
+      </li>
+    <!-- NEWS_LIST_END -->
+    </ul>
+    <div style="text-align:center;margin-top:26px;">
+      <a href="column.html" class="btn btn-ghost">コラムをもっと見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="display">まずは、数字を一緒に整理しませんか。</h2>
+    <p>新潟を拠点に、中小・小規模事業者の「お金が残る経営」を伴走支援しています。</p>
+    <a href="contact.html" class="btn btn-primary">無料相談を申し込む</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <b>Solid Grow Prosper</b>
+        <span>ソリッド・グロウ・プロスパー</span>
+        <span>社外CFO・財務コンサルティング / 生成AI活用支援</span>
+      </div>
+      <nav>
+        <a href="service.html">事業内容</a>
+        <a href="profile.html">プロフィール</a>
+        <a href="column.html">コラム</a>
+        <a href="toolbox.html">どうぐばこ</a>
+        <a href="contact.html">お問合せ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="copy">© 2026 Solid Grow Prosper</div>
+  </div>
+</footer>
+
+</body>
+</html>
