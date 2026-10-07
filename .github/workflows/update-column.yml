@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  actions: read   # 前回の実行結果を調べるために必要
 
 # 同時に2つ動かない（前の実行が終わってから次を実行）
 concurrency:
@@ -34,6 +35,29 @@ jobs:
 
       - name: 必要な部品をインストール
         run: npm ci --prefix column-system
+
+      # 前回の実行が失敗していた場合は、今回かならず Xサーバーへ送り直す
+      # （アップロードだけ失敗して、サイトが古いまま残るのを防ぐ）
+      # 調べられなかったときも、念のため送り直す
+      - name: 前回の実行が成功していたか確認
+        id: last
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+        run: |
+          # このファイル自身の名前（例：update-column.yml）を取り出す
+          file="${WORKFLOW_REF%@*}"
+          file="${file##*/}"
+          last=$(gh run list --workflow "$file" --status completed --limit 1 \
+                   --json conclusion --jq '.[0].conclusion // "none"' 2>/dev/null || echo "unknown")
+          echo "前回の実行結果：${last:-unknown}"
+          if [ "$last" = "success" ]; then
+            echo "retry=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "retry=true" >> "$GITHUB_OUTPUT"
+            echo "前回が成功ではなかったため、今回は Xサーバーへ送り直します。"
+          fi
 
       - name: 台帳とドキュメントから、コラム・お知らせを作り直す
         env:
@@ -63,10 +87,10 @@ jobs:
           git push
 
       # Xサーバーへアップロード
-      #  ・自動実行（1時間ごと）のときは、変更があった場合だけ
+      #  ・自動実行（1時間ごと）のときは、変更があった場合か、前回の実行が失敗していた場合だけ
       #  ・手動実行・ファイル修正のときは、必ず実行
       - name: Xサーバーへアップロード
-        if: steps.diff.outputs.changed == 'true' || github.event_name != 'schedule'
+        if: steps.diff.outputs.changed == 'true' || github.event_name != 'schedule' || steps.last.outputs.retry == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
