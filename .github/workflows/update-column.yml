@@ -1,0 +1,86 @@
+name: コラム・お知らせ自動更新
+
+# 【いつ動くか】
+#  ・1時間ごとに自動実行（公開台帳と Googleドキュメントの変更をサイトに反映）
+#  ・GitHub 上でサイトのファイルを直したとき（その内容を Xサーバーへ反映）
+#  ・GitHub の「Actions」タブから手動実行（今すぐ反映したいとき）
+on:
+  schedule:
+    - cron: '7 * * * *'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 同時に2つ動かない（前の実行が終わってから次を実行）
+concurrency:
+  group: site-update
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: リポジトリを取得
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 必要な部品をインストール
+        run: npm ci --prefix column-system
+
+      - name: 台帳とドキュメントから、コラム・お知らせを作り直す
+        env:
+          SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL }}
+        run: node column-system/build.js
+
+      - name: 変更があったか確認
+        id: diff
+        run: |
+          # 自動生成される3か所だけを対象にする（column-img は画像のある記事が1つもなければ存在しない）
+          git add -A -- index.html column.html
+          git add -A -- column-img 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "変更はありませんでした。"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --cached --stat
+          fi
+
+      - name: 変更を記録（コミット）
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git commit -m "コラム・お知らせを自動更新"
+          git push
+
+      # Xサーバーへアップロード
+      #  ・自動実行（1時間ごと）のときは、変更があった場合だけ
+      #  ・手動実行・ファイル修正のときは、必ず実行
+      - name: Xサーバーへアップロード
+        if: steps.diff.outputs.changed == 'true' || github.event_name != 'schedule'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/column-system/**
+            **/gas/**
+            **/手順書/**
+            **/*.md
